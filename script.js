@@ -6,47 +6,52 @@ function compareAndHighlight() {
     const rawText1 = div1.innerText;
     const rawText2 = div2.innerText;
 
-    if (!rawText1.trim() && !rawText2.trim()) {
-        resultDiv.innerHTML = "Please enter content.";
+    if (rawText1.trim() === "" && rawText2.trim() === "") {
+        resultDiv.innerHTML = "Please enter content to compare.";
         resultDiv.className = "result different";
-        resultDiv.style.display = "block";
         return;
     }
 
     const maxLength = Math.max(rawText1.length, rawText2.length);
-    let h1 = "";
-    let h2 = "";
+    let highlightedText1 = "";
+    let highlightedText2 = "";
     let isSame = true;
 
     for (let i = 0; i < maxLength; i++) {
-        const c1 = rawText1[i];
-        const c2 = rawText2[i];
+        let char1 = rawText1[i];
+        let char2 = rawText2[i];
 
-        if (c1 === c2) {
-            if (c1 !== undefined) h1 += esc(c1);
-            if (c2 !== undefined) h2 += esc(c2);
+        if (char1 === char2) {
+            if (char1 !== undefined) highlightedText1 += escapeHTML(char1);
+            if (char2 !== undefined) highlightedText2 += escapeHTML(char2);
         } else {
             isSame = false;
-            if (c1 !== undefined) h1 += `<span class="diff">${esc(c1)}</span>`;
-            if (c2 !== undefined) h2 += `<span class="diff">${esc(c2)}</span>`;
+            if (char1 !== undefined) {
+                highlightedText1 += `<span class="diff">${escapeHTML(char1)}</span>`;
+            }
+            if (char2 !== undefined) {
+                highlightedText2 += `<span class="diff">${escapeHTML(char2)}</span>`;
+            }
         }
     }
 
-    div1.innerHTML = h1;
-    div2.innerHTML = h2;
+    div1.innerHTML = highlightedText1;
+    div2.innerHTML = highlightedText2;
 
     if (isSame && rawText1.length === rawText2.length) {
         resultDiv.innerHTML = "Success: Both contents are identical.";
         resultDiv.className = "result match";
     } else {
-        resultDiv.innerHTML = "Notice: Differences found.";
+        resultDiv.innerHTML = "Notice: Differences found and highlighted in red.";
         resultDiv.className = "result different";
     }
-    resultDiv.style.display = "block";
 }
 
-function esc(str) {
-    return str.replace(/[&<>"']/g, m => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
-    }[m]));
+function escapeHTML(str) {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
