@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text & Link Comparator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Difference Checker</h1>
+        
+        <div class="input-group">
+            <div id="text1" class="editable-input" contenteditable="true" placeholder="Enter first text or link..."></div>
+            <div id="text2" class="editable-input" contenteditable="true" placeholder="Enter second text or link..."></div>
+        </div>
+
+        <button onclick="compareAndHighlight()">Check Differences</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
