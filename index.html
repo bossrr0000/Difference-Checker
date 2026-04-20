@@ -11,11 +11,27 @@
         <h1>Difference Checker</h1>
         
         <div class="input-group">
-            <div id="text1" class="editable-input" contenteditable="true" placeholder="Enter first text or link..."></div>
-            <div id="text2" class="editable-input" contenteditable="true" placeholder="Enter second text or link..."></div>
+            <div class="box-wrapper">
+                <div class="action-btns">
+                    <button class="clear-btn" onclick="clearBox('text1')" title="Clear">x</button>
+                    <button class="copy-btn" onclick="copyText('text1', this)" title="Copy">
+                        <span class="icon"></span>
+                    </button>
+                </div>
+                <div id="text1" class="editable-input" contenteditable="true" placeholder="Paste first text here..."></div>
+            </div>
+            <div class="box-wrapper">
+                <div class="action-btns">
+                    <button class="clear-btn" onclick="clearBox('text2')" title="Clear">x</button>
+                    <button class="copy-btn" onclick="copyText('text2', this)" title="Copy">
+                        <span class="icon"></span>
+                    </button>
+                </div>
+                <div id="text2" class="editable-input" contenteditable="true" placeholder="Paste second text here..."></div>
+            </div>
         </div>
 
-        <button onclick="compareAndHighlight()">Check Differences</button>
+        <button id="mainBtn" onclick="compareAndHighlight()">Check Differences</button>
 
         <div id="result" class="result"></div>
     </div>
