@@ -1,161 +1,25 @@
-body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background-color: #ececec;
-}
-
-.container {
-    width: 100%;
-    max-width: 900px;
-    text-align: center;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
+body { font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; justify-content: center; padding: 20px; background-color: #ececec; }
+.container { width: 100%; max-width: 900px; text-align: center; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 h1 { margin-top: 0; margin-bottom: 25px; color: #333; }
+.input-group { display: flex; gap: 15px; margin-bottom: 20px; }
+.box-wrapper { width: 50%; position: relative; }
+.editable-input { width: 100%; height: 450px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; overflow-y: auto; scrollbar-gutter: stable; text-align: left; background-color: #fff; font-size: 14px; line-height: 1.6; box-sizing: border-box; white-space: pre-wrap; word-break: break-word; outline: none; }
 
-.input-group {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
+.first-letter-blue, .first-letter-blue * { color: #007bff !important; font-weight: bold !important; }
 
-.box-wrapper {
-    width: 50%;
-    position: relative;
-}
-
-.editable-input {
-    width: 100%;
-    height: 450px;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    overflow-y: auto;
-    text-align: left;
-    white-space: pre-wrap;
-    background-color: #fff;
-    font-size: 14px;
-    line-height: 1.6;
-    box-sizing: border-box;
-}
-
-.editable-input div::first-letter,
-.editable-input::first-letter {
-    color: #007bff;
-    font-weight: bold;
-}
-
-.editable-input:empty:before {
-    content: attr(placeholder);
-    color: #aaa;
-}
-
-.editable-input:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
-.action-btns {
-    position: absolute;
-    top: 8px;
-    right: 17px;
-    z-index: 10;
-    display: flex;
-    gap: 6px;
-}
-
-.clear-btn {
-    width: 20px;
-    height: 20px;
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #999;
-    font-size: 13px;
-    transition: all 0.2s;
-    opacity: 0.6;
-}
-
-.clear-btn:hover {
-    background: #ea5f6d;
-    color: white;
-    border-color: #ea5f6d;
-    opacity: 1;
-}
-
-.copy-btn {
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgba(108, 117, 125, 0.2);
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    opacity: 0.5;
-}
-
-.copy-btn:hover {
-    background: rgba(75, 79, 83, 0.5);
-}
-
-.copy-btn .icon {
-    width: 10px;
-    height: 8px;
-    border: 1.5px solid #555; 
-    border-radius: 1px;
-    position: relative;
-    margin-right: -2px;
-    margin-top: 3px;
-    right: 1.5px;
-}
-
-.copy-btn .icon::before {
-    content: "";
-    position: absolute;
-    top: -3.5px;
-    right: -3px;
-    width: 7px;
-    height: 9.5px;
-    border-top: 1.5px solid #555;
-    border-right: 1.5px solid #555;
-    border-radius: 1px;
-}
-
-.copy-btn.copied {
-    background: rgba(40, 167, 69, 0.8) !important;
-    border-color: #28a745;
-}
-
-.copy-btn.copied .icon, 
-.copy-btn.copied .icon::before {
-    border-color: white;
-}
-
-#mainBtn {
-    padding: 12px 35px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-}
-
+.editable-input:empty:before { content: attr(placeholder); color: #aaa; }
+.editable-input:focus { outline: none; border-color: #007bff; }
+.action-btns { position: absolute; top: 8px; right: 17px; z-index: 10; display: flex; gap: 6px; }
+.clear-btn { width: 20px; height: 20px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; font-weight: bold; color: #999; font-size: 13px; transition: all 0.2s; opacity: 0.6; }
+.clear-btn:hover { background: #ea5f6d; color: white; border-color: #ea5f6d; opacity: 1; }
+.copy-btn { width: 20px; height: 20px; border: 1px solid rgba(108, 117, 125, 0.2); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; opacity: 0.5; }
+.copy-btn:hover { background: rgba(75, 79, 83, 0.5); }
+.copy-btn .icon { width: 10px; height: 8px; border: 1.5px solid #555; border-radius: 1px; position: relative; margin-right: -2px; margin-top: 3px; right: 1.5px; }
+.copy-btn .icon::before { content: ""; position: absolute; top: -3.5px; right: -3px; width: 7px; height: 9.5px; border-top: 1.5px solid #555; border-right: 1.5px solid #555; border-radius: 1px; }
+.copy-btn.copied { background: rgba(40, 167, 69, 0.8) !important; border-color: #28a745; }
+.copy-btn.copied .icon, .copy-btn.copied .icon::before { border-color: white; }
+#mainBtn { padding: 12px 35px; background-color: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600; }
 .result { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; }
 .match { background-color: #d4edda; color: #155724; display: block; }
 .different { background-color: #f8d7da; color: #721c24; display: block; }
-
-.diff { 
-    color: #dc3545; 
-    font-weight: bold;
-}
+.diff { color: #dc3545; font-weight: bold; }
